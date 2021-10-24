@@ -29,3 +29,12 @@ $ git reset –hard bae128
 # 但是如果使用 git revert 的话、他会重做 生成一个新的版本4、版本2的内容不存在、但是版本3的内容还是存在的
 $ git revert -n xxxx
 ```
+
+eg
+
+```text
+比如我三个版本分别提交1.txt 2.txt 3.txt
+然后我发现2.txt有问题 不想要了
+所以 git revert -n 2.txt的hash
+但是重做之后需要重新 git add & git commit -m"" & git push
+```
