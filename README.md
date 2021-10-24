@@ -38,3 +38,32 @@ eg
 所以 git revert -n 2.txt的hash
 但是重做之后需要重新 git add & git commit -m"" & git push
 ```
+
+### git rebase(场景1、合并多次commit 为一次)
+
+```bash
+# 合并多次commit 这样子利于代码review和管理
+git rebase -i HEAD~4
+# 合并四次commit
+
+# 不要合并已经提交到远程的分支
+# 如果异常退出了vi
+# git rebase --edit-todo // 直接在进来
+```
+
+### git rebase (合并分支)
+
+```bash
+# 1.我们先从 master 分支切出一个 dev 分支，进行开发：
+$ git:(master) git checkout -b feature1
+
+# 2.这时候，你的同事完成了一次 hotfix，并合并入了 master 分支，此时 master 已经领先于你的 feature1 分支了：
+
+# 3.3.恰巧，我们想要同步 master 分支的改动，首先想到了 merge，执行：
+$ git:(feature1) git merge master
+
+# 就会在记录里发现一些 merge 的信息，但是我们觉得这样污染了 commit 记录，想要保持一份干净的 commit，怎么办呢？这时候，git rebase 就派上用场了。
+
+4.让我们来试试 git rebase ，先回退到同事 hotfix 后合并 master 的步骤：
+
+```
